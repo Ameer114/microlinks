@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "MicroLinks",
   description: "MicroLinks helps you to shorten your lengthy urls",
+  icons: {
+    icon: "/favicon.png",   // or .ico, .svg
+  },
 };
 
 export default function RootLayout({ children }) {
