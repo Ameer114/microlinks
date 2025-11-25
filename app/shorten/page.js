@@ -8,10 +8,13 @@ const Shorten = () => {
   const [customAlias, setCustomAlias] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [copy, setcopy] = useState("copy")
+  const [load, setload]=useState(false);
+  
 
   const handleGenerate = async() => {
     // For now just simulate short URL generation
     if (!url || !customAlias) return;
+    setload(true);
 
     const data = {
     url: url,  // fixed your URL (add https://)
@@ -29,6 +32,8 @@ const Shorten = () => {
     .catch(error => {
     console.error(error);
     });
+        setload(false);
+
 
   }
 
@@ -64,6 +69,9 @@ const Shorten = () => {
         </button>
 
         {/* Display Short URL */}
+        {load&&(
+          <div className="loading">Wait a Sec..!</div>
+        )}
         {shortUrl && (
           <div className="w-full bg-red-100 rounded-lg p-3 text-red-800 font-medium flex justify-between items-center">
         
